@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jornada Estratégica Sodimac Media 2027</title>
+<meta name="description" content="Agenda y muro de check-in de la Jornada Estratégica Sodimac Media 2027">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<style>
+  :root{
+    --azul:#0A3D91; --azul2:#1565D8; --celeste:#E8F0FD; --rojo:#E3262F; --amarillo:#FFC72C;
+    --tinta:#1B2433; --gris:#6B7686; --fondo:#F5F7FB; --blanco:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--fondo);color:var(--tinta);line-height:1.45}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--azul) 0%,var(--azul2) 100%);color:#fff;padding:56px 24px 90px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:rgba(255,199,44,.18)}
+  .hero::before{content:"";position:absolute;left:-80px;bottom:-140px;width:300px;height:300px;border-radius:50%;background:rgba(227,38,47,.18)}
+  .wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+  .tag{display:inline-block;background:var(--amarillo);color:var(--azul);font-weight:700;font-size:13px;letter-spacing:1px;padding:6px 14px;border-radius:30px;text-transform:uppercase}
+  .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.05;margin:18px 0 10px;font-weight:800}
+  .hero p.lema{font-size:clamp(17px,2.2vw,22px);opacity:.92;font-style:italic}
+  .meta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .meta span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:8px 14px;border-radius:10px;font-size:14px}
+
+  /* PILARES */
+  .pilares{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-56px;position:relative;z-index:2}
+  .pilar{background:#fff;border-radius:16px;padding:18px;box-shadow:0 8px 24px rgba(10,61,145,.12);border-top:5px solid var(--azul2);transition:transform .2s}
+  .pilar:hover{transform:translateY(-4px)}
+  .pilar:nth-child(2){border-color:var(--rojo)} .pilar:nth-child(3){border-color:var(--amarillo)} .pilar:nth-child(4){border-color:var(--azul)}
+  .pilar b{display:block;font-size:18px;margin:6px 0 2px}
+  .pilar small{color:var(--gris);font-size:13px}
+  .pilar .ico{font-size:26px}
+
+  section{padding:46px 0 10px}
+  h2{font-size:28px;color:var(--azul);margin-bottom:6px}
+  .sub{color:var(--gris);margin-bottom:22px}
+
+  /* PREVIA */
+  .previa{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{background:#fff;border-radius:14px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .card .num{font-size:30px;font-weight:800;color:var(--rojo)}
+  .card h3{font-size:16px;margin:4px 0 6px}
+  .card p{font-size:14px;color:var(--gris)}
+
+  /* FILTROS */
+  .filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+  .filtros button{border:1px solid #cfd8e6;background:#fff;color:var(--tinta);padding:8px 14px;border-radius:30px;cursor:pointer;font-size:14px;transition:.2s}
+  .filtros button.on,.filtros button:hover{background:var(--azul);color:#fff;border-color:var(--azul)}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--azul2),var(--rojo),var(--amarillo));border-radius:3px}
+  .item{position:relative;background:#fff;border-radius:14px;margin-bottom:12px;box-shadow:0 2px 10px rgba(0,0,0,.05);cursor:pointer;transition:.25s;border-left:5px solid transparent}
+  .item::before{content:"";position:absolute;left:-29px;top:22px;width:15px;height:15px;border-radius:50%;background:#fff;border:3px solid var(--azul2)}
+  .item:hover{transform:translateX(4px);box-shadow:0 6px 18px rgba(10,61,145,.12)}
+  .item.t-pres{border-left-color:var(--azul2)}
+  .item.t-work{border-left-color:var(--rojo)} .item.t-work::before{border-color:var(--rojo)}
+  .item.t-break{border-left-color:var(--amarillo);background:#FFFBEF} .item.t-break::before{border-color:var(--amarillo)}
+  .item.t-ops{border-left-color:#13A07A} .item.t-ops::before{border-color:#13A07A}
+  .item.ahora{outline:3px solid var(--amarillo)}
+  .item.ahora .head::after{content:"EN CURSO";margin-left:auto;background:var(--rojo);color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;animation:pulso 1.4s infinite}
+  @keyframes pulso{50%{opacity:.4}}
+  .head{display:flex;align-items:center;gap:14px;padding:16px 18px}
+  .hora{font-weight:700;color:var(--azul);min-width:118px;font-size:14px}
+  .emoji{font-size:24px}
+  .titulo{font-weight:700;font-size:17px}
+  .quien{font-size:13px;color:var(--gris)}
+  .chev{margin-left:auto;transition:.25s;color:var(--gris)}
+  .item.abierto .chev{transform:rotate(180deg)}
+  .item.ahora .chev{margin-left:12px}
+  .detalle{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 18px 0 150px}
+  .item.abierto .detalle{max-height:300px;padding-bottom:16px}
+  .detalle p{font-size:14.5px;color:#3a4555}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .chip{background:var(--celeste);color:var(--azul);font-size:12px;padding:4px 10px;border-radius:20px;font-weight:600}
+  .oculto{display:none}
+
+  /* STICKERS */
+  .votos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .voto{background:#fff;border-radius:14px;padding:20px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+  .voto .big{font-size:40px}
+  .voto b{display:block;margin:6px 0 2px}
+  .voto p{font-size:13px;color:var(--gris)}
+
+  /* SALIDA */
+  .salida{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;border-radius:20px;padding:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:6px}
+  .salida h3{font-size:17px;margin-bottom:6px;color:var(--amarillo)}
+  .salida p{font-size:14px;opacity:.92}
+
+  /* TIMER */
+  .timer{background:#fff;border-radius:20px;padding:26px;box-shadow:0 2px 10px rgba(0,0,0,.05);display:flex;flex-wrap:wrap;align-items:center;gap:24px;justify-content:space-between}
+  .reloj{font-size:64px;font-weight:800;color:var(--azul);font-variant-numeric:tabular-nums;min-width:200px}
+  .reloj.feedback{color:#13A07A} .reloj.fin{color:var(--rojo);animation:pulso 1s infinite}
+  .fase{font-size:15px;color:var(--gris)}
+  .btns button{background:var(--azul);color:#fff;border:0;padding:11px 18px;border-radius:10px;font-weight:600;cursor:pointer;margin:4px}
+  .btns button.sec{background:var(--celeste);color:var(--azul)}
+
+  footer{text-align:center;color:var(--gris);font-size:13px;padding:40px 20px}
+
+  @media (max-width:800px){
+    .pilares,.previa,.votos,.salida{grid-template-columns:1fr 1fr}
+    .detalle{padding-left:18px}
+    .hora{min-width:auto}
+  }
+  @media (max-width:520px){
+    .pilares,.previa,.votos,.salida{grid-template-columns:1fr}
+    .head{flex-wrap:wrap}
+  }
+  @media print{
+    .filtros,.timer-sec{display:none}
+    .detalle{max-height:none!important;padding-bottom:12px!important}
+    .item{break-inside:avoid}
+  }
+
+.topnav{position:sticky;top:0;z-index:50;background:rgba(10,61,145,.96);color:#fff;backdrop-filter:blur(6px)}
+.navin{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;flex-wrap:wrap;gap:8px}
+.navin a{color:#fff;text-decoration:none;margin-left:14px;font-weight:600;font-size:14px;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,.12)}
+.navin a:hover{background:var(--amarillo);color:var(--azul)}
+html{scroll-behavior:smooth}
+#agenda,#muro-sec{scroll-margin-top:60px}
+.irmuro{display:inline-block;margin-top:10px;background:var(--rojo);color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:6px 12px;border-radius:20px}
+
+/* ===== MURO ===== */
+#muro-sec{margin-top:40px;background:#fff;border-top:1px solid #e3e8f0}
+.m-head{background:linear-gradient(135deg,var(--azul),var(--azul2));color:#fff;padding:26px 28px;position:relative;overflow:hidden}
+.m-head::after{content:"";position:absolute;right:-90px;top:-110px;width:280px;height:280px;border-radius:50%;background:rgba(255,199,44,.2)}
+.m-head h2{color:#fff;font-size:clamp(28px,4.5vw,46px);font-weight:800;margin-top:10px;position:relative;z-index:1}
+.m-head p{opacity:.9;position:relative;z-index:1}
+.m-cont{position:absolute;right:28px;bottom:24px;z-index:1;text-align:right}
+.m-cont b{font-size:42px;display:block;line-height:1}
+.m-cont span{font-size:13px;opacity:.85}
+.m-panel{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:16px 28px;background:#fff;border-bottom:1px solid #e3e8f0}
+.m-panel input{border:2px solid #d5deeb;border-radius:10px;padding:11px 14px;font-size:16px;outline:none}
+.m-panel input:focus{border-color:var(--azul2)}
+#m-nombre{width:200px} #m-palabra{flex:1;min-width:200px}
+.m-btn{border:0;border-radius:10px;padding:11px 16px;font-weight:600;font-size:14px;cursor:pointer;background:#E8F0FD;color:var(--azul)}
+.m-btn:hover{background:#d6e4fb}
+.m-btn.prim{background:var(--rojo);color:#fff}
+.m-btn.on{background:var(--azul);color:#fff}
+.m-vistas{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.m-msg{width:100%;font-size:13px;color:var(--rojo);min-height:16px}
+.m-main{padding:34px 28px;min-height:380px;background:var(--fondo)}
+.m-vacio{text-align:center;color:var(--gris);margin-top:50px;font-size:18px}
+.m-vacio div{font-size:60px;margin-bottom:10px}
+#m-muro{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;align-items:flex-start}
+.postit{width:190px;min-height:170px;padding:20px 16px 14px;border-radius:4px;box-shadow:0 10px 18px rgba(0,0,0,.14);position:relative;display:flex;flex-direction:column;justify-content:center;text-align:center;animation:entra .45s cubic-bezier(.2,1.4,.4,1)}
+.postit::before{content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);width:70px;height:20px;background:rgba(255,255,255,.55)}
+.postit .pal{font-size:26px;font-weight:800;word-break:break-word;line-height:1.1}
+.postit .nom{font-size:13px;margin-top:10px;opacity:.75;font-weight:600}
+.postit .x{position:absolute;top:6px;right:8px;background:none;border:0;cursor:pointer;padding:2px 6px;font-size:16px;opacity:0}
+.postit:hover .x,.postit .x:focus{opacity:.7}
+@keyframes entra{from{transform:scale(.3) rotate(-20deg);opacity:0}}
+.c0{background:#FFE58A}.c1{background:#FFB8BC}.c2{background:#B9D6FF}.c3{background:#B8F0D8}.c4{background:#FFD2A6}.c5{background:#E3CCFF}
+#m-nube{display:none;flex-wrap:wrap;gap:14px 26px;justify-content:center;align-items:center;max-width:1100px;margin:20px auto;min-height:300px}
+#m-nube span{font-weight:800;line-height:1;animation:entra .5s ease}
+body.vista-nube #m-muro{display:none} body.vista-nube #m-nube{display:flex}
+/* proyección: solo muro */
+body.proyectar .topnav,body.proyectar .hero,body.proyectar .agenda-wrap,body.proyectar footer,body.proyectar .m-panel{display:none}
+body.proyectar #muro-sec{margin:0;min-height:100vh}
+body.proyectar .m-main{min-height:calc(100vh - 150px)}
+.m-salir{display:none;position:fixed;bottom:16px;right:16px;opacity:.6;z-index:60}
+body.proyectar .m-salir{display:block}
+@media(max-width:640px){.m-cont{position:static;text-align:left;margin-top:12px}#m-nombre{width:100%}.m-vistas{margin-left:0}.navin a{margin-left:6px}}
+@media print{.topnav,#muro-sec{display:none}}
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="wrap navin"><b>Sodimac Media · Jornada 2027</b><div><a href="#agenda">📅 Agenda</a><a href="#muro-sec">🧡 Muro</a></div></div></nav>
+
+
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">Sodimac Media · Jornada Estratégica</span>
+    <h1>Estrategia 2027:<br>cada uno con su plan para cumplir</h1>
+    <p class="lema">“En 2026 sembramos. En 2027 consolidamos el camino a 2030.”</p>
+    <div class="meta">
+      <span>📍 Lugar por confirmar</span>
+      <span>🕘 09:00 – 17:30</span>
+      <span>👥 Michelle · PMs · Operaciones</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap agenda-wrap" style="padding:0 20px">
+  <div class="pilares">
+    <div class="pilar"><span class="ico">💰</span><b>Profit</b><small>Crecer con rentabilidad</small></div>
+    <div class="pilar"><span class="ico">🤝</span><b>Partner</b><small>Planes anuales con proveedores</small></div>
+    <div class="pilar"><span class="ico">⚙️</span><b>Eficiencia</b><small>Flujo, verificación y reportería</small></div>
+    <div class="pilar"><span class="ico">⭐</span><b>Referente</b><small>Casos, eventos y vocería</small></div>
+  </div>
+
+  <!-- PREVIA -->
+  <section>
+    <h2>Antes de llegar</h2>
+    <p class="sub">Todos presentamos con la misma estructura para comparar, aprender y conectar planes.</p>
+    <div class="previa">
+      <div class="card"><div class="num">1</div><h3>Plantilla única</h3><p>Meta 2027 · Dónde estoy · Mi apuesta · Qué necesito.</p></div>
+      <div class="card"><div class="num">2</div><h3>Tu post-it gigante</h3><p>Trae escrito <b>1 número + 1 apuesta + 1 bloqueo</b>.</p></div>
+      <div class="card"><div class="num">3</div><h3>Regla de oro</h3><p>10 minutos para presentar y 5 de feedback. Sin excepciones ⏱️</p></div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda">
+    <h2>Agenda del día</h2>
+    <p class="sub">Haz clic en cada bloque para ver la dinámica.</p>
+    <div class="filtros" id="filtros">
+      <button class="on" data-f="all">Todo</button>
+      <button data-f="t-pres">🎤 Presentaciones</button>
+      <button data-f="t-ops">⚙️ Operaciones</button>
+      <button data-f="t-work">🔥 Workshops</button>
+      <button data-f="t-break">☕ Pausas</button>
+    </div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <!-- VOTACION -->
+  <section>
+    <h2>Votación en vivo</h2>
+    <p class="sub">Durante las rondas de PMs, cada asistente tiene 3 stickers para pegar en las presentaciones.</p>
+    <div class="votos">
+      <div class="voto"><div class="big">💡</div><b>Idea a replicar</b><p>Algo que otro PM debería copiar mañana.</p></div>
+      <div class="voto"><div class="big">🤝</div><b>Sinergia</b><p>Un proveedor, familia o campaña que podemos trabajar juntos.</p></div>
+      <div class="voto"><div class="big">⚠️</div><b>Riesgo</b><p>Un punto que puede poner en peligro la meta y hay que cubrir.</p></div>
+    </div>
+  </section>
+
+  <!-- TIMER -->
+  <section class="timer-sec">
+    <h2>Reloj de presentaciones</h2>
+    <p class="sub">10 minutos para presentar + 5 de feedback. Proyéctalo durante las rondas.</p>
+    <div class="timer">
+      <div>
+        <div class="reloj" id="reloj">10:00</div>
+        <div class="fase" id="fase">Listo para comenzar · Presentación</div>
+      </div>
+      <div class="btns">
+        <button type="button" id="bStart">▶ Iniciar</button>
+        <button type="button" id="bPause" class="sec">⏸ Pausa</button>
+        <button type="button" id="bReset" class="sec">↺ Reiniciar</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SALIDA -->
+  <section>
+    <h2>Con qué salimos</h2>
+    <p class="sub">La jornada termina con acuerdos concretos, no solo con buenas ideas.</p>
+    <div class="salida">
+      <div><h3>🎯 Metas por PM</h3><p>Una lámina resumen con la meta, las apuestas y los proveedores clave de cada uno.</p></div>
+      <div><h3>🚧 Top 5 bloqueos</h3><p>Priorizados y cada uno con responsable y fecha.</p></div>
+      <div><h3>🗺️ Gantt 2027</h3><p>Hitos consolidados de PMs y Operaciones, con sus dependencias a la vista.</p></div>
+    </div>
+  </section>
+</div>
+
+
+<section id="muro-sec" style="padding:0">
+  <div class="m-head">
+    <span class="tag">Check-in · 09:00</span>
+    <h2>Mi 2026 en una palabra ✨</h2>
+    <p>En 2026 sembramos. En 2027 consolidamos el camino a 2030.</p>
+    <div class="m-cont"><b id="m-cuenta">0</b><span>palabras en el muro</span></div>
+  </div>
+  <div class="m-panel">
+    <label class="sr" for="m-nombre" style="position:absolute;left:-9999px">Nombre</label>
+    <input id="m-nombre" placeholder="Nombre (opcional)" maxlength="30">
+    <label for="m-palabra" style="position:absolute;left:-9999px">Palabra</label>
+    <input id="m-palabra" placeholder="Escribe la palabra y presiona Enter" maxlength="24">
+    <button class="m-btn prim" type="button" id="m-agregar">＋ Pegar en el muro</button>
+    <div class="m-vistas">
+      <button class="m-btn on" type="button" data-v="muro">🗒️ Post-its</button>
+      <button class="m-btn" type="button" data-v="nube">☁️ Nube</button>
+      <button class="m-btn" type="button" id="m-proyectar">📽️ Proyectar</button>
+      <button class="m-btn" type="button" id="m-exportar">⬇️ Exportar</button>
+      <button class="m-btn" type="button" id="m-limpiar">🗑️ Limpiar</button>
+    </div>
+    <div class="m-msg" id="m-msg" aria-live="polite"></div>
+  </div>
+  <div class="m-main">
+    <div class="m-vacio" id="m-vacio"><div>🧡</div>El muro está esperando la primera palabra…</div>
+    <div id="m-muro"></div>
+    <div id="m-nube"></div>
+  </div>
+</section>
+<button class="m-btn m-salir" type="button" id="m-salir">✕ Salir de proyección</button>
+
+<footer>Sodimac Media · Jornada Estratégica 2027</footer>
+<script>
+const agenda = [
+  {ini:"09:00",fin:"09:20",e:"☕",t:"Check-in: “Mi 2026 en una palabra”",q:"Todo el equipo",c:"t-break",
+   d:"Cada persona dice una palabra y la pega en el muro. Rompemos el hielo y aparece el ánimo del equipo.<br><a class=\"irmuro\" href=\"#muro-sec\">🧡 Ir al muro</a>",chips:["Muro vivo"]},
+  {ini:"09:20",fin:"10:00",e:"🎯",t:"Hacia dónde vamos",q:"Michelle Lavanchy",c:"t-pres",
+   d:"Contexto de la industria, resultados 2026, meta 2027 y los 4 pilares: Profit, Partner, Eficiencia y Referente. Termina con un desafío para el equipo.",chips:["Meta 2027","Pilares","Camino a 2030"]},
+  {ini:"10:00",fin:"11:15",e:"🎤",t:"Ronda PMs I: “Mi plan para cumplir”",q:"Primera mitad de los PMs",c:"t-pres",
+   d:"Cada PM muestra su meta, su cartera Tier A, las familias que debe activar y sus apuestas. Son 10 minutos para presentar y 5 de feedback.",chips:["Tier A","Familias","Apuestas"]},
+  {ini:"11:15",fin:"11:30",e:"🥐",t:"Break",q:"",c:"t-break",d:"Pausa para recargar energía.",chips:[]},
+  {ini:"11:30",fin:"12:45",e:"🎤",t:"Ronda PMs II",q:"Segunda mitad de los PMs",c:"t-pres",
+   d:"Presentan los PMs restantes. El resto del equipo vota en vivo con sus 3 stickers: 💡 idea a replicar, 🤝 sinergia y ⚠️ riesgo.",chips:["Votación en vivo"]},
+  {ini:"12:45",fin:"13:15",e:"⚙️",t:"Operaciones: “Cómo hacemos que pase”",q:"Equipo de Operaciones",c:"t-ops",
+   d:"Flujo de implementación, verificación, reportería y espacios en tienda tratados como medios. Termina con un compromiso de nivel de servicio.",chips:["Implementación","Verificación","Reportería"]},
+  {ini:"13:15",fin:"14:15",e:"🍽️",t:"Almuerzo",q:"",c:"t-break",d:"Almuerzo con todo el equipo.",chips:[]},
+  {ini:"14:15",fin:"15:15",e:"🔥",t:"Workshop 1: El muro de los bloqueos",q:"3 mesas de trabajo",c:"t-work",
+   d:"Agrupamos los bloqueos de la mañana y los priorizamos por impacto en la meta. Se trabaja en 3 mesas: Proveedores, Tienda e In-store, y Datos y reportería.",chips:["Proveedores","In-store","Datos"]},
+  {ini:"15:15",fin:"16:00",e:"🧩",t:"Workshop 2: Ciclo con proveedores",q:"En parejas",c:"t-work",
+   d:"Role play de PM y proveedor: cómo pasar de una campaña aislada a un plan anual con KPIs.",chips:["Role play","Plan anual","KPIs"]},
+  {ini:"16:00",fin:"16:15",e:"☕",t:"Break",q:"",c:"t-break",d:"Pausa breve antes del cierre.",chips:[]},
+  {ini:"16:15",fin:"17:00",e:"🗺️",t:"Gantt colectivo 2027",q:"Todo el equipo",c:"t-work",
+   d:"Cada persona pega sus hitos en una línea de tiempo gigante, de enero a diciembre. Así vemos los cuellos de botella y las dependencias con Operaciones.",chips:["Hitos","Dependencias"]},
+  {ini:"17:00",fin:"17:30",e:"✍️",t:"Compromisos y cierre",q:"Michelle + equipo",c:"t-pres",
+   d:"Cada persona firma su “mi compromiso 2027”. Michelle hace el cierre y premia la estrategia más votada 🏆",chips:["Compromisos","Premio"]}
+];
+
+const tl = document.getElementById("timeline");
+agenda.forEach(a=>{
+  const el = document.createElement("div");
+  el.className = "item " + a.c;
+  el.dataset.ini = a.ini; el.dataset.fin = a.fin;
+  el.innerHTML = `
+    <div class="head">
+      <div class="hora">${a.ini} – ${a.fin}</div>
+      <div class="emoji">${a.e}</div>
+      <div><div class="titulo">${a.t}</div>${a.q?`<div class="quien">${a.q}</div>`:""}</div>
+      <div class="chev">▾</div>
+    </div>
+    <div class="detalle"><p>${a.d}</p>${a.chips.length?`<div class="chips">${a.chips.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`:""}</div>`;
+  el.addEventListener("click",()=>el.classList.toggle("abierto"));
+  tl.appendChild(el);
+});
+
+// Filtros
+document.querySelectorAll("#filtros button").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll("#filtros button").forEach(x=>x.classList.remove("on"));
+    b.classList.add("on");
+    const f=b.dataset.f;
+    document.querySelectorAll(".item").forEach(i=>i.classList.toggle("oculto", f!=="all" && !i.classList.contains(f)));
+  });
+});
+
+// Bloque en curso
+const toMin = s=>{const [h,m]=s.split(":").map(Number);return h*60+m;};
+function marcarAhora(){
+  const d=new Date(), now=d.getHours()*60+d.getMinutes();
+  document.querySelectorAll(".item").forEach(i=>{
+    i.classList.toggle("ahora", now>=toMin(i.dataset.ini) && now<toMin(i.dataset.fin));
+  });
+}
+marcarAhora(); setInterval(marcarAhora,30000);
+
+// Reloj 10 + 5
+const reloj=document.getElementById("reloj"), fase=document.getElementById("fase");
+let seg=600, enFeedback=false, timer=null;
+function pintar(){
+  const m=String(Math.floor(seg/60)).padStart(2,"0"), s=String(seg%60).padStart(2,"0");
+  reloj.textContent=`${m}:${s}`;
+  reloj.className="reloj"+(enFeedback?" feedback":"")+(seg===0?" fin":"");
+}
+function tick(){
+  if(seg>0){seg--;pintar();return;}
+  if(!enFeedback){enFeedback=true;seg=300;fase.textContent="🗣️ Feedback del equipo";pintar();}
+  else{clearInterval(timer);timer=null;fase.textContent="⏰ ¡Tiempo! Pasa el siguiente";pintar();}
+}
+document.getElementById("bStart").addEventListener("click",()=>{
+  if(timer) return;
+  fase.textContent = enFeedback ? "🗣️ Feedback del equipo" : "🎤 Presentación en curso";
+  timer=setInterval(tick,1000);
+});
+document.getElementById("bPause").addEventListener("click",()=>{clearInterval(timer);timer=null;fase.textContent="⏸ En pausa";});
+document.getElementById("bReset").addEventListener("click",()=>{
+  clearInterval(timer);timer=null;seg=600;enFeedback=false;fase.textContent="Listo para comenzar · Presentación";pintar();
+});
+pintar();
+
+// ===== MURO =====
+(function(){
+const KEY="muro2026_sodimac_media";
+let datos=[];
+try{datos=JSON.parse(localStorage.getItem(KEY))||[]}catch(e){datos=[]}
+const $=id=>document.getElementById(id);
+const guardar=()=>{try{localStorage.setItem(KEY,JSON.stringify(datos))}catch(e){}};
+const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const norm=s=>s.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+function render(){
+  $("m-cuenta").textContent=datos.length;
+  $("m-vacio").style.display=datos.length?"none":"block";
+  $("m-muro").innerHTML=datos.map((d,i)=>{
+    const rot=((d.id%7)-3)*1.3;
+    return `<div class="postit c${d.id%6}" style="transform:rotate(${rot}deg)">
+      <button class="x" type="button" data-i="${i}" aria-label="Quitar">✕</button>
+      <div class="pal">${esc(d.p)}</div>${d.n?`<div class="nom">— ${esc(d.n)}</div>`:""}</div>`;
+  }).join("");
+  const conteo={};
+  datos.forEach(d=>{const k=norm(d.p);conteo[k]=conteo[k]||{t:d.p,c:0};conteo[k].c++;});
+  const lista=Object.values(conteo).sort((a,b)=>b.c-a.c);
+  const max=lista.length?lista[0].c:1;
+  const col=["#0A3D91","#E3262F","#1565D8","#E0A500","#13A07A","#7A3FD1"];
+  $("m-nube").innerHTML=lista.map((w,i)=>`<span style="font-size:${26+(w.c/max)*58}px;color:${col[i%6]}" title="${w.c}">${esc(w.t)}</span>`).join("");
+}
+function agregar(){
+  const p=$("m-palabra").value.trim(), n=$("m-nombre").value.trim();
+  if(!p){$("m-msg").textContent="Escribe una palabra primero.";return;}
+  if(/\s/.test(p)){$("m-msg").textContent="¡Es una sola palabra! 😉";return;}
+  $("m-msg").textContent="";
+  datos.push({p:p.charAt(0).toUpperCase()+p.slice(1),n,id:Date.now()});
+  guardar();render();
+  $("m-palabra").value="";$("m-nombre").value="";$("m-nombre").focus();
+}
+$("m-agregar").addEventListener("click",agregar);
+$("m-palabra").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();agregar();}});
+$("m-nombre").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();$("m-palabra").focus();}});
+$("m-muro").addEventListener("click",e=>{const b=e.target.closest(".x");if(!b)return;datos.splice(+b.dataset.i,1);guardar();render();});
+document.querySelectorAll(".m-vistas [data-v]").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".m-vistas [data-v]").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  document.body.classList.toggle("vista-nube",b.dataset.v==="nube");
+}));
+$("m-proyectar").addEventListener("click",()=>{
+  document.body.classList.add("proyectar");window.scrollTo(0,0);
+  if(document.documentElement.requestFullscreen)document.documentElement.requestFullscreen().catch(()=>{});
+});
+function salir(){document.body.classList.remove("proyectar");$("muro-sec").scrollIntoView();}
+$("m-salir").addEventListener("click",()=>{if(document.fullscreenElement)document.exitFullscreen();salir();});
+document.addEventListener("fullscreenchange",()=>{if(!document.fullscreenElement&&document.body.classList.contains("proyectar"))salir();});
+$("m-limpiar").addEventListener("click",()=>{if(datos.length&&confirm("¿Borrar todas las palabras del muro?")){datos=[];guardar();render();}});
+$("m-exportar").addEventListener("click",()=>{
+  if(!datos.length){$("m-msg").textContent="No hay palabras para exportar.";return;}
+  const csv="Nombre;Palabra\n"+datos.map(d=>`${d.n||""};${d.p}`).join("\n");
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv"}));
+  a.download="Mi_2026_en_una_palabra.csv";document.body.appendChild(a);a.click();a.remove();
+});
+render();
+})();
+</script>
+</body>
+</html>
